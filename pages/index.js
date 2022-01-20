@@ -172,7 +172,7 @@ function HomePage() {
       label: '20 años',
     },
   ];
-  const result = 'test'
+  
     return (
             <Container>
               <ContainerRow>
