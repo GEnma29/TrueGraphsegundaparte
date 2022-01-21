@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Graph from './components/Graph';
 import { useForm, Controller } from 'react-hook-form'
 import "@fontsource/mulish";
-import Slider from '@mui/material/Slider';
+//import Slider from '@mui/material/Slider';
 
 
 
@@ -15,26 +15,26 @@ const oldData = [
     "amt": 2400
   },
     {
-      "name": "1",
-      "tu banco": 530,
+      "name": "1 año",
+      "tu banco": 510,
       "Shalder": 550,
       "amt": 2400
     },
     {
-      "name": "5",
-      "tu banco": 650,
+      "name": "5 años",
+      "tu banco": 550,
       "Shalder": 750,
       "amt": 2210
     },
     {
-      "name": "10",
-      "tu banco": 800,
+      "name": "10 años",
+      "tu banco": 600,
       "Shalder": 1000,
       "amt": 2290
     },
     {
-      "name": "20",
-      "tu banco": 1100,
+      "name": "20 años",
+      "tu banco": 700,
       "Shalder": 1500,
       "amt": 2000
     },
@@ -64,7 +64,7 @@ function HomePage() {
   });
 
   function UpdateData(deposit){
-    const GainBank = deposit * 0.06
+    const GainBank = deposit * 0.02
     const GainShalder = deposit * 0.10
 
 
@@ -91,25 +91,25 @@ function HomePage() {
         "amt": 2400
       },
         {
-          "name": "1",
+          "name": "1 año",
           "tu banco": GainBankx1,
           "Shalder": GainShalderx1,
           "amt": 2400
         },
         {
-          "name": "5",
+          "name": "5 años",
           "tu banco":GainBankx5 ,
           "Shalder": GainShalderx5,
           "amt": 2210
         },
         {
-          "name": "10",
+          "name": "10 años",
           "tu banco":GainBankx10 ,
           "Shalder": GainShalderx10,
           "amt": 2290
         },
         {
-          "name": "20",
+          "name": "20 años",
           "tu banco":GainBankx20,
           "Shalder": GainShalderx20,
           "amt": 2000
@@ -181,7 +181,7 @@ function HomePage() {
                   <TitleSlider>Proyecta tus recompensas</TitleSlider>
                   <ContainerDeposit>
                     <p>Depósito inicial</p>
-                    <Input {...register("deposit")} />
+                    <Input  type="number" {...register("deposit")} />
                   </ContainerDeposit>
                 </ContainerSlider>
 
@@ -192,6 +192,18 @@ function HomePage() {
   }
   
   export default HomePage
+
+
+const Leyendy = styled.p`
+display: flex;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 800;
+line-height: 16px;
+letter-spacing: 0em;
+
+`
+
 
 const Input = styled.input`
 background-color: #fff !important;
@@ -204,6 +216,16 @@ background-color: #fff !important;
   font-weight: 800;
   font-size: 1.2rem;
   width: 4rem;
+  color:#101737;
+  
+  [type=number]::-webkit-inner-spin-button, 
+  
+  [type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+[type=number] { -moz-appearance:textfield; }
 
 `
 const ContainerDeposit = styled.div`

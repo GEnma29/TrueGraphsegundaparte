@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Label} from 'recharts';
 
-const Graph = ({data}) => {
+const Graph = ({data, Children}) => {
     return (
         <>
         <ViewDesktop>
-        <LineChart width={730} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 10 }}>
+        <LineChart width={730} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
         <CartesianGrid strokeDasharray="33" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name"/>
         <YAxis />
         <Tooltip />
         <Legend />
@@ -19,7 +19,7 @@ const Graph = ({data}) => {
         <ViewMobilesm>
         <LineChart width={360} height={260} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
         <CartesianGrid strokeDasharray="33" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name"/>
         <YAxis />
         <Tooltip />
         <Legend />
@@ -30,7 +30,7 @@ const Graph = ({data}) => {
         <ViewMobilemd>
         <LineChart width={390} height={250} data={data}  margin={{ top: 5, right: 30, left: 20, bottom: 10 }}>
         <CartesianGrid strokeDasharray="33" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="name"/>
         <YAxis />
         <Tooltip />
         <Legend />
@@ -42,6 +42,14 @@ const Graph = ({data}) => {
     )
 }
 
+const Leyend= styled.p`
+display: flex;
+font-size: 0.875rem;
+font-style: normal;
+font-weight: 800;
+line-height: 16px;
+letter-spacing: 0em;
+`
 const ViewDesktop = styled.div`
 display: none;
 @media screen and (min-width: 720px){
