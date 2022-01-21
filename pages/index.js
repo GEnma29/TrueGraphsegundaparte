@@ -10,32 +10,32 @@ import "@fontsource/mulish";
 const oldData = [
   {
     "name": "0",
-    "tu banco": 500,
-    "Shalder": 500,
+    "Cuenta de ahorros bancaria": 500,
+    "Simpol": 500,
     "amt": 2400
   },
     {
       "name": "1 año",
-      "tu banco": 510,
-      "Shalder": 550,
+      "Cuenta de ahorros bancaria": 510,
+      "Simpol": 550,
       "amt": 2400
     },
     {
       "name": "5 años",
-      "tu banco": 550,
-      "Shalder": 750,
+      "Cuenta de ahorros bancaria": 550,
+      "Simpol": 750,
       "amt": 2210
     },
     {
       "name": "10 años",
-      "tu banco": 600,
-      "Shalder": 1000,
+      "Cuenta de ahorros bancaria": 600,
+      "Simpol": 1000,
       "amt": 2290
     },
     {
       "name": "20 años",
-      "tu banco": 700,
-      "Shalder": 1500,
+      "Cuenta de ahorros bancaria": 700,
+      "Simpol": 1500,
       "amt": 2000
     },
     
@@ -86,32 +86,32 @@ function HomePage() {
     const newData = [
       {
         "name": "0",
-        "tu banco": deposit,
-        "Shalder": deposit,
+        "Cuenta de ahorros bancaria": deposit,
+        "Simpol": deposit,
         "amt": 2400
       },
         {
           "name": "1 año",
-          "tu banco": GainBankx1,
-          "Shalder": GainShalderx1,
+          "Cuenta de ahorros bancaria": GainBankx1,
+          "Simpol": GainShalderx1,
           "amt": 2400
         },
         {
           "name": "5 años",
-          "tu banco":GainBankx5 ,
-          "Shalder": GainShalderx5,
+          "Cuenta de ahorros bancaria":GainBankx5 ,
+          "Simpol": GainShalderx5,
           "amt": 2210
         },
         {
           "name": "10 años",
-          "tu banco":GainBankx10 ,
-          "Shalder": GainShalderx10,
+          "Cuenta de ahorros bancaria":GainBankx10 ,
+          "Simpol": GainShalderx10,
           "amt": 2290
         },
         {
           "name": "20 años",
-          "tu banco":GainBankx20,
-          "Shalder": GainShalderx20,
+          "Cuenta de ahorros bancaria":GainBankx20,
+          "Simpol": GainShalderx20,
           "amt": 2000
         },    
     ]
@@ -260,6 +260,7 @@ margin: 0;
 const ContainerSlider = styled.div`
     display: flex;
     flex-direction: column;
+    align-self: center;
     align-items: center;
     min-width: 18rem;
     max-width: 20rem;

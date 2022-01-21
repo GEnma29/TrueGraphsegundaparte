@@ -6,14 +6,16 @@ const Graph = ({data, Children}) => {
     return (
         <>
         <ViewDesktop>
-        <LineChart width={730} height={250} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
+        <LineChart width={730} height={250} data={data} margin={{ top: 25, right: 30, left: 20, bottom: 20 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
-        <YAxis />
+        <YAxis>
+        <Label value="Dolares $" offset={10} position="top" />
+        </YAxis>
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Shalder" stroke="#8884d8" />
-        <Line type="monotone" dataKey="tu banco" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
         </LineChart>
         </ViewDesktop>
         <ViewMobilesm>
@@ -23,8 +25,8 @@ const Graph = ({data, Children}) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Shalder" stroke="#8884d8" />
-        <Line type="monotone" dataKey="tu banco" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
         </LineChart>
         </ViewMobilesm>
         <ViewMobilemd>
@@ -34,8 +36,8 @@ const Graph = ({data, Children}) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Shalder" stroke="#8884d8" />
-        <Line type="monotone" dataKey="tu banco" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
         </LineChart>
         </ViewMobilemd>
         </>
