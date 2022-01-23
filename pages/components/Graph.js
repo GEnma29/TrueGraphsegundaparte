@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Label} from 'recharts';
 
-const Graph = ({data, Children}) => {
+const Graph = ({data}) => {
     return (
         <>
         <ViewDesktop>
