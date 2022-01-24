@@ -85,7 +85,7 @@ function HomePage() {
       unArray.push({
         name: index,
         "Cuenta de ahorros bancaria":GainBank * index ,
-        Simpol: ValueG,
+        Simpol:Math.round(ValueG),
 
       })
 
