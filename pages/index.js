@@ -349,12 +349,16 @@ line-height: 16px;
 color: #021F77;
 `
 const GainValue = styled.p`
+ margin-top: 1.5rem;
  align-self: flex-start;
  background: linear-gradient(89.34deg, #007AFF 8.53%, #06C270 130.89%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 font-size: 1.5rem;
 font-weight: 800;
+@media screen and (min-width: 720px){
+    margin-top: 0;
+}
 
 
 `

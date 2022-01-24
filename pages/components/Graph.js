@@ -10,7 +10,7 @@ const Graph = ({data}) => {
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis>
-        <Label value="Dolares $" offset={15} position="top" />
+        <Label value="Dolares $" offset={22} position="top" />
         </YAxis>
         <Tooltip />
         <Legend />
@@ -19,11 +19,11 @@ const Graph = ({data}) => {
         </LineChart>
         </ViewDesktop>
         <ViewMobilesm>
-        <LineChart width={360} height={260} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
+        <LineChart width={360} height={360} data={data} margin={{ top: 35, right: 30, left: 20, bottom: 45 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis >
-        <Label value="Dolares $" offset={15} position="top" />
+        <Label value="Dolares $" offset={22} position="top" />
         </YAxis>
         <Tooltip />
         <Legend />
@@ -32,7 +32,7 @@ const Graph = ({data}) => {
         </LineChart>
         </ViewMobilesm>
         <ViewMobilemd>
-        <LineChart width={390} height={250} data={data}  margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
+        <LineChart width={390} height={360} data={data}  margin={{ top: 35, right: 30, left: 20, bottom: 45 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis>
