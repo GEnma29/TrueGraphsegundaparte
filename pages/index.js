@@ -103,14 +103,14 @@ function HomePage() {
       const Month11 = Math.pow(Z, 0.91);
       const Month12 = Math.pow(Z, 1);
 
-      console.log(Month1);
+      /*console.log(Month1);
       console.log(Month2);
       console.log(Month3);
       console.log(Month4);
       console.log(Month5);
       console.log(Month6);
       console.log(Month7);
-      console.log(Month8);
+      console.log(Month8);*/
 
       const Ganancia = U * deposit;
       console.log(Ganancia);
