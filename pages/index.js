@@ -4,6 +4,8 @@ import Graph from "./components/Graph";
 import { useForm, Controller } from "react-hook-form";
 import "@fontsource/mulish";
 import Slider from "@mui/material/Slider";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 //import { OneYearsCalculate } from "./components/funtions";
 
 
@@ -38,25 +40,11 @@ const oldData = [
 let data = oldData;
 function HomePage() {
 
-  const [TotalGain, setTotalGain] = useState(1500);
-
-  function valuetext(value) {
-    return `${value} años`;
-  }
-  function BuildArry(num){
-    for (let index = 0; index < num; index++) {
-      return console.log(`${index} index`)
-      
-    }
-  }
-
-  function valueLabelFormat(value) {
-    return marks.findIndex((mark) => mark.value === value) + 1;
-  }
+  const [TotalGain, setTotalGain] = useState(1000);
 
   const DefaultValues = {
     deposit: 500,
-    years: "",
+    years: 0,
   };
 
   const { register, watch, control } = useForm({
@@ -64,8 +52,41 @@ function HomePage() {
     defaultValues: DefaultValues,
   });
 
+
+
+  const depositInicial = watch("deposit");
+
   function UpdateData(deposit, years) {
-    const GainBank = deposit * 0.0026;
+    const unArray = [
+      {
+        name: "0",
+        "Cuenta de ahorros bancaria": 0,
+        Simpol: 0,
+      }
+    ]
+    const Length = years
+    console.log(Length)
+    for (let index = 1; index <= Length ; index++) {
+      const r = 0.1047;
+      const Z = 1 + r;
+      const U = Math.pow(Z, index);
+      const Ganancia = U * deposit;
+      const ValueG = Ganancia - deposit;
+      const GainBank = deposit * 0.0026;
+      unArray.push({
+        name: index,
+        "Cuenta de ahorros bancaria":GainBank * index ,
+        Simpol: ValueG,
+
+      })
+
+      console.log(`${Math.round(ValueG)} esta es la ganancia de ${index}`)
+      data = unArray
+    }
+    console.log(unArray)
+   
+
+   /* const GainBank = deposit * 0.0026;
     const GainShalder = deposit * 0.1;
 
     const r = 0.1047;
@@ -74,101 +95,16 @@ function HomePage() {
     const Z = 1 + r;
     const U = Math.pow(Z, ValueMothn);
     const Ganancia = U * deposit;
+    const ValueG = Ganancia - deposit;
     console.log(`${r} esto es valor de r`);
     console.log(`${ValueMothn} esto es valor de ValueMothn`);
     console.log(`${Z} esto es valor de Z`);
     console.log(`${U} esto es valor de U `);
     console.log(`${Ganancia} esto es valor de Ganancia `);
-
+    console.log(`${ValueG} esto es valor de ValueG `); */
+/*
     if (years === 1) {
 
-     // OneYearsCalculate(deposit,data,TotaleGain)
- 
-      const GainBank = deposit * 0.0026;
-      const r = 0.1047;
-      const Month = 12;
-      const ValueMothn = Month / 12;
-      const Z = 1 + r;
-      const U = Math.pow(Z, ValueMothn);
-      const Month1 = Math.pow(Z, 0.083);
-      const Month2 = Math.pow(Z, 0.166);
-      const Month3 = Math.pow(Z, 0.25);
-      const Month4 = Math.pow(Z, 0.33);
-      const Month5 = Math.pow(Z, 0.416);
-      const Month6 = Math.pow(Z, 0.5);
-      const Month7 = Math.pow(Z, 0.58);
-      const Month8 = Math.pow(Z, 0.66);
-      const Month9 = Math.pow(Z, 0.75);
-      const Month10 = Math.pow(Z, 0.83);
-      const Month11 = Math.pow(Z, 0.91);
-      const Month12 = Math.pow(Z, 1);
-
-      /*console.log(Month1);
-      console.log(Month2);
-      console.log(Month3);
-      console.log(Month4);
-      console.log(Month5);
-      console.log(Month6);
-      console.log(Month7);
-      console.log(Month8);*/
-
-      const Ganancia = U * deposit;
-      console.log(Ganancia);
-      const Ganancia1 = ( Month1 * deposit) - deposit;
-      const Ganancia2 = (Month2 * deposit) - deposit ;
-      const Ganancia3 = (Month3 * deposit) - deposit;
-      const Ganancia4 = (Month4 * deposit) - deposit;
-      const Ganancia5 = (Month5 * deposit) - deposit;
-      const Ganancia6 = (Month6 * deposit) - deposit;
-      const Ganancia7 = (Month7 * deposit) - deposit;
-      const Ganancia8 = (Month8 * deposit) - deposit;
-      const Ganancia9 = (Month9 * deposit) - deposit;
-      const Ganancia10 = (Month10 * deposit) - deposit;
-      const Ganancia11 = (Month11 * deposit) - deposit;
-      const Ganancia12 = (Month12 * deposit) - deposit;
-
-      const OneYearData = [
-        {
-          name: "0",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol: 0,
-        },
-        {
-          name: "1 mes",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol:  Math.round(Ganancia1),
-        },
-        {
-          name: "4 meses",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol:  Math.round(Ganancia4),
-        },
-        {
-          name: "6 ",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol:  Math.round(Ganancia6),
-        },
-        {
-          name: "8 meses",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol:  Math.round(Ganancia8),
-        },
-
-        {
-          name: "10 meses",
-          "Cuenta de ahorros bancaria": 0,
-          Simpol:  Math.round(Ganancia10),
-        },
-        {
-          name: "12 meses",
-          "Cuenta de ahorros bancaria": GainBank,
-          Simpol:  Math.round(Ganancia12),
-        },
-      ];
-      data = OneYearData;
-      console.log(data);
-      setTotalGain(deposit + Math.round(Ganancia12))
-      return data ;
       
     } else {
       const Year = parseInt(years);
@@ -184,7 +120,7 @@ function HomePage() {
       const Z = 1 + r;
       const U = Math.pow(Z, ValueMothn);
       const Ganancia = U * deposit;
-      const ValueG = Ganancia - deposit;
+     const ValueG = Ganancia - deposit; 
       console.log(`${U} esto es la U`);
       console.log(`${Ganancia} esto es la ganacia`);
       console.log(`${ValueG} esto es la ValueG`);
@@ -284,6 +220,7 @@ function HomePage() {
     data = newData;
     console.log(newData);
   }
+*/ }
 
   React.useEffect(() => {
     const subscription = watch((value, { name, type }) => {
@@ -296,6 +233,7 @@ function HomePage() {
   }, [watch]);
 
   /**
+   *  <Input type="number" min={0} max={50} {...register("years")} />
    * <Controller
                 control={control}
                 name='years'
@@ -316,62 +254,62 @@ function HomePage() {
               />
    */
 
-  const marks = [
-    {
-      value: 100,
-      label: "100$",
-    },
-    {
-      value: 500,
-      label: "500$",
-    },
-    {
-      value: 1000,
-      label: "1000$",
-    },
-    {
-      value: 1500,
-      label: "1500$",
-    },
-    {
-      value: 2500,
-      label: "2500$",
-    },
-  ];
-
   return (
     <Container>
       <ContainerRow>
+        <div>
+          <GainValue>{`${TotalGain}$`}</GainValue>
         <Graph data={data} />
+        </div>
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
           <ContainerDeposit>
-            <p>Saldo Total</p>
-            <p>{`$${TotalGain}`}</p>
-          </ContainerDeposit>
-          <ContainerDeposit>
             <p>Tiempo en años</p>
-            <Input type="number" min={0} max={30} {...register("years")} />
+            <Box 
+            border={'1px solid #bdbdbd'} 
+            borderRadius={'15px'} 
+            padding={1}
+            width={'2rem'}
+            >
+              <Controller
+              render={({ field }) => 
+              <Input 
+              type="number"
+               min={0}
+               max={50}
+              maxlength={2}
+              {...field}
+              onChange={(e) => field.onChange(parseInt(e.target.value))}
+              />}
+              name="years"
+              control={control}
+              defaultValue={0}
+              rules={
+                { 
+                  max: 50,
+                } 
+              }
+              />
+    
+            </Box>
           </ContainerDeposit>
           <ContainerDeposit>
             <p>Depósito inicial</p>
+            <InitialValue>{`$ ${depositInicial}`}</InitialValue>
           </ContainerDeposit>
           <Controller
             control={control}
             name="deposit"
-            defaultValue={12}
+            defaultValue={500}
             render={({ field }) => (
               <>
                 <Slider
                   {...field}
                   aria-label="Restricted values"
-                  defaultValue={12}
-                  valueLabelFormat={valueLabelFormat}
-                  getAriaValueText={valuetext}
-                  step={null}
-                  min={100}
-                  max={2500}
-                  marks={marks}
+                  defaultValue={500}
+                  step={100}
+                  min={500}
+                  max={100000}
                 />
               </>
             )}
@@ -393,17 +331,33 @@ const Leyendy = styled.p`
   letter-spacing: 0em;
 `;
 
+const InitialValue = styled.h4`
+font-size: 0.875rem;
+font-weight: 800;
+line-height: 16px;
+color: #021F77;
+`
+const GainValue = styled.p`
+ align-self: flex-start;
+ background: linear-gradient(89.34deg, #007AFF 8.53%, #06C270 130.89%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 1.5rem;
+font-weight: 800;
+
+
+`
 const Input = styled.input`
   background-color: #fff !important;
   z-index: 1;
-  height: 40px;
+  height: 100%;
   appearance: none;
   border: none;
   outline: none;
   cursor: pointer;
   font-weight: 800;
   font-size: 1.2rem;
-  width: 4rem;
+  width:100%;
   color: #101737;
 
   [type="number"]::-webkit-inner-spin-button,
