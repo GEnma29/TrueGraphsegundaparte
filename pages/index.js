@@ -1,42 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Graph from "./components/Graph";
 import { useForm, Controller } from "react-hook-form";
 import "@fontsource/mulish";
 import Slider from "@mui/material/Slider";
+//import { OneYearsCalculate } from "./components/funtions";
+
 
 const oldData = [
   {
     name: "0",
-    "Cuenta de ahorros bancaria": 500,
-    Simpol: 500,
+    "Cuenta de ahorros bancaria":0,
+    Simpol: 0,
   },
   {
     name: "1 año",
-    "Cuenta de ahorros bancaria": 501.2,
-    Simpol: 550,
+    "Cuenta de ahorros bancaria": 1.2,
+    Simpol: 50,
   },
   {
     name: "5 años",
-    "Cuenta de ahorros bancaria": 506.2,
-    Simpol: 750,
+    "Cuenta de ahorros bancaria": 6.2,
+    Simpol: 250,
   },
   {
     name: "10 años",
-    "Cuenta de ahorros bancaria": 512,
-    Simpol: 1000,
+    "Cuenta de ahorros bancaria": 12,
+    Simpol: 500,
   },
   {
     name: "20 años",
-    "Cuenta de ahorros bancaria": 526,
-    Simpol: 1500,
+    "Cuenta de ahorros bancaria": 26,
+    Simpol: 1000,
   },
 ];
 
 let data = oldData;
 function HomePage() {
+
+  const [TotalGain, setTotalGain] = useState(1500);
+
   function valuetext(value) {
     return `${value} años`;
+  }
+  function BuildArry(num){
+    for (let index = 0; index < num; index++) {
+      return console.log(`${index} index`)
+      
+    }
   }
 
   function valueLabelFormat(value) {
@@ -69,7 +80,10 @@ function HomePage() {
     console.log(`${U} esto es valor de U `);
     console.log(`${Ganancia} esto es valor de Ganancia `);
 
-    if (years === "1") {
+    if (years === 1) {
+
+     // OneYearsCalculate(deposit,data,TotaleGain)
+ 
       const GainBank = deposit * 0.0026;
       const r = 0.1047;
       const Month = 12;
@@ -116,45 +130,53 @@ function HomePage() {
       const OneYearData = [
         {
           name: "0",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit,
+          "Cuenta de ahorros bancaria": 0,
+          Simpol: 0,
         },
         {
           name: "1 mes",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit + Math.round(Ganancia1),
+          "Cuenta de ahorros bancaria": 0,
+          Simpol:  Math.round(Ganancia1),
         },
         {
           name: "4 meses",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit + Math.round(Ganancia4),
+          "Cuenta de ahorros bancaria": 0,
+          Simpol:  Math.round(Ganancia4),
         },
         {
-          name: "6 meses",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit + Math.round(Ganancia6),
+          name: "6 ",
+          "Cuenta de ahorros bancaria": 0,
+          Simpol:  Math.round(Ganancia6),
         },
         {
           name: "8 meses",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit + Math.round(Ganancia8),
+          "Cuenta de ahorros bancaria": 0,
+          Simpol:  Math.round(Ganancia8),
         },
 
         {
           name: "10 meses",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit + Math.round(Ganancia10),
+          "Cuenta de ahorros bancaria": 0,
+          Simpol:  Math.round(Ganancia10),
         },
         {
           name: "12 meses",
-          "Cuenta de ahorros bancaria": deposit + GainBank,
-          Simpol: deposit + Math.round(Ganancia12),
+          "Cuenta de ahorros bancaria": GainBank,
+          Simpol:  Math.round(Ganancia12),
         },
       ];
       data = OneYearData;
       console.log(data);
-      return data;
+      setTotalGain(deposit + Math.round(Ganancia12))
+      return data ;
+      
     } else {
+      const Year = parseInt(years);
+      for (let step = 0; step < 5; step++) {
+        // Se ejecuta 5 veces, con valores del paso 0 al 4.
+        console.log('Camina un paso hacia el este');
+      }
+      console.log(Year)
       const GainBank = deposit * 0.0026;
       const r = 0.1047;
       const Month = 12;
@@ -166,17 +188,19 @@ function HomePage() {
       console.log(`${U} esto es la U`);
       console.log(`${Ganancia} esto es la ganacia`);
       console.log(`${ValueG} esto es la ValueG`);
-      const GainBankx1 = parseInt(deposit) + GainBank;
-      const GainShalderx1 = parseInt(deposit) + ValueG;
+      setTotalGain(Math.round(ValueG) * Year)
+      console.log(`${TotalGain} esto es total no `)
+      const GainBankx1 =  GainBank;
+      const GainShalderx1 =  ValueG;
       ///////////////////////////////////////////////////////
-      const GainBankx5 = parseInt(deposit) + GainBank * 5;
-      const GainShalderx5 = parseInt(deposit) + ValueG * 5;
+      const GainBankx5 =  GainBank * 5;
+      const GainShalderx5 =  ValueG * 5;
       //////////////////////////////////////////////////////
-      const GainBankx10 = parseInt(deposit) + GainBank * 10;
-      const GainShalderx10 = parseInt(deposit) + Math.round(ValueG) * 10;
+      const GainBankx10 =  GainBank * 10;
+      const GainShalderx10 =  Math.round(ValueG) * 10;
       //////////////////////////////////////////////////////
-      const GainBankx20 = parseInt(deposit) + GainBank * 20;
-      const GainShalderx20 = parseInt(deposit) + Math.round(ValueG) * 20;
+      const GainBankx20 =   GainBank * 20;
+      const GainShalderx20 =  Math.round(ValueG) * 20;
 
       console.log(GainBank);
       console.log(GainShalderx1);
@@ -184,8 +208,8 @@ function HomePage() {
       const newData = [
         {
           name: "0",
-          "Cuenta de ahorros bancaria": deposit,
-          Simpol: deposit,
+          "Cuenta de ahorros bancaria": 0,
+          Simpol: 0,
         },
         {
           name: "1 año",
@@ -209,8 +233,10 @@ function HomePage() {
         },
       ];
       console.log(newData);
-      return (data = newData);
+      data = newData
+      return data;
     }
+
 
     const GainBankx1 = parseInt(deposit) + GainBank;
     const GainShalderx1 = parseInt(deposit) + Math.round(Ganancia);
@@ -264,7 +290,7 @@ function HomePage() {
       console.log(value, name, type);
       const years = watch("years");
       const deposit = watch("deposit");
-      UpdateData(deposit, years);
+      UpdateData(deposit, parseInt(years));
     });
     return () => subscription.unsubscribe();
   }, [watch]);
@@ -308,8 +334,8 @@ function HomePage() {
       label: "1500$",
     },
     {
-      value: 2000,
-      label: "2000$",
+      value: 2500,
+      label: "2500$",
     },
   ];
 
@@ -319,6 +345,10 @@ function HomePage() {
         <Graph data={data} />
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
+          <ContainerDeposit>
+            <p>Saldo Total</p>
+            <p>{`$${TotalGain}`}</p>
+          </ContainerDeposit>
           <ContainerDeposit>
             <p>Tiempo en años</p>
             <Input type="number" min={0} max={30} {...register("years")} />
@@ -340,7 +370,7 @@ function HomePage() {
                   getAriaValueText={valuetext}
                   step={null}
                   min={100}
-                  max={2000}
+                  max={2500}
                   marks={marks}
                 />
               </>
