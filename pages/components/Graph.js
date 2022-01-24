@@ -19,7 +19,7 @@ const Graph = ({data}) => {
         </LineChart>
         </ViewDesktop>
         <ViewMobilesm>
-        <LineChart width={360} height={260} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
+        <LineChart width={360} height={260} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis />
@@ -30,7 +30,7 @@ const Graph = ({data}) => {
         </LineChart>
         </ViewMobilesm>
         <ViewMobilemd>
-        <LineChart width={390} height={250} data={data}  margin={{ top: 5, right: 30, left: 20, bottom: 10 }}>
+        <LineChart width={390} height={250} data={data}  margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis />

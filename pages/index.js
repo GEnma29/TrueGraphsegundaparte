@@ -39,7 +39,6 @@ const oldData = [
 
 let data = oldData;
 function HomePage() {
-
   const [TotalGain, setTotalGain] = useState(1000);
 
   const DefaultValues = {
@@ -56,6 +55,16 @@ function HomePage() {
 
   const depositInicial = watch("deposit");
 
+  /*function updateGain(desposit,years){
+    const r = 0.1047;
+    const Z = 1 + r;
+    const U = Math.pow(Z, years);
+    const Ganancia = U * desposit;
+    const ValueG = Ganancia - desposit;
+    
+    return console.log(ValueG)
+    
+  }*/
   function UpdateData(deposit, years) {
     const unArray = [
       {
@@ -82,8 +91,10 @@ function HomePage() {
 
       console.log(`${Math.round(ValueG)} esta es la ganancia de ${index}`)
       data = unArray
+      setTotalGain(Math.round(ValueG))
     }
     console.log(unArray)
+  
    
 
    /* const GainBank = deposit * 0.0026;
@@ -227,7 +238,8 @@ function HomePage() {
       console.log(value, name, type);
       const years = watch("years");
       const deposit = watch("deposit");
-      UpdateData(deposit, parseInt(years));
+     // updateGain(deposit, parseInt(years))
+      UpdateData(deposit, parseInt(years))
     });
     return () => subscription.unsubscribe();
   }, [watch]);
@@ -275,9 +287,6 @@ function HomePage() {
               render={({ field }) => 
               <Input 
               type="number"
-               min={0}
-               max={50}
-              maxlength={2}
               {...field}
               onChange={(e) => field.onChange(parseInt(e.target.value))}
               />}
@@ -287,6 +296,8 @@ function HomePage() {
               rules={
                 { 
                   max: 50,
+                  min: 1,
+                  maxLength: 2,
                 } 
               }
               />
