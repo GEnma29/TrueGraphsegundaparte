@@ -5,7 +5,8 @@ import { useForm, Controller } from "react-hook-form";
 import "@fontsource/mulish";
 import Slider from "@mui/material/Slider";
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+//import TextField from '@mui/material/TextField';
+import NumberFormat from 'react-number-format';
 //import { OneYearsCalculate } from "./components/funtions";
 
 
@@ -84,7 +85,7 @@ function HomePage() {
       const GainBank = deposit * 0.0026;
       unArray.push({
         name: index,
-        "Cuenta de ahorros bancaria":GainBank * index ,
+        "Cuenta de ahorros bancaria": Math.round(GainBank * index ),
         Simpol:Math.round(ValueG),
 
       })
@@ -270,13 +271,41 @@ function HomePage() {
     <Container>
       <ContainerRow>
         <div>
-          <GainValue>{`${TotalGain}$`}</GainValue>
+          <GainValue>
+             <NumberFormat 
+             value={TotalGain}
+             displayType={'text'} 
+             thousandSeparator={true}
+             prefix={'$'} 
+             />
+           </GainValue>
         <Graph data={data} />
         </div>
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
           <ContainerDeposit>
-            <p>Tiempo en años</p>
+            <p>Depósito inicial</p>
+            <InitialValue>{`$ ${depositInicial}`}</InitialValue>
+          </ContainerDeposit>
+          <Controller
+            control={control}
+            name="deposit"
+            defaultValue={500}
+            render={({ field }) => (
+              <>
+                <Slider
+                  {...field}
+                  aria-label="Restricted values"
+                  defaultValue={500}
+                  step={100}
+                  min={500}
+                  max={100000}
+                />
+              </>
+            )}
+          />
+          <ContainerDeposit>
+            <p>Años</p>
             <Box 
             border={'1px solid #bdbdbd'} 
             borderRadius={'15px'} 
@@ -304,27 +333,6 @@ function HomePage() {
     
             </Box>
           </ContainerDeposit>
-          <ContainerDeposit>
-            <p>Depósito inicial</p>
-            <InitialValue>{`$ ${depositInicial}`}</InitialValue>
-          </ContainerDeposit>
-          <Controller
-            control={control}
-            name="deposit"
-            defaultValue={500}
-            render={({ field }) => (
-              <>
-                <Slider
-                  {...field}
-                  aria-label="Restricted values"
-                  defaultValue={500}
-                  step={100}
-                  min={500}
-                  max={100000}
-                />
-              </>
-            )}
-          />
         </ContainerSlider>
       </ContainerRow>
     </Container>
@@ -343,7 +351,7 @@ const Leyendy = styled.p`
 `;
 
 const InitialValue = styled.h4`
-font-size: 0.875rem;
+font-size: 1.2rem;
 font-weight: 800;
 line-height: 16px;
 color: #021F77;

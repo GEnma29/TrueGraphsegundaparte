@@ -6,11 +6,10 @@ const Graph = ({data}) => {
     return (
         <>
         <ViewDesktop>
-        <LineChart width={750} height={250} data={data} margin={{ top: 35, right: 40, left: 20, bottom: 20 }}>
+        <LineChart width={750} height={265} data={data} margin={{ top: 25, right: 40, left: 20, bottom: 20 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis>
-        <Label value="Dolares $" offset={22} position="top" />
         </YAxis>
         <Tooltip />
         <Legend />
@@ -23,7 +22,6 @@ const Graph = ({data}) => {
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis >
-        <Label value="Dolares $" offset={22} position="top" />
         </YAxis>
         <Tooltip />
         <Legend />
@@ -36,7 +34,6 @@ const Graph = ({data}) => {
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
         <YAxis>
-        <Label value="Dolares $" offset={15} position="top" />
         </YAxis>
         <Tooltip />
         <Legend />
