@@ -11,7 +11,7 @@ const Graph = ({data, deposit}) => {
             console.log(payload)
           return (
             <GlassDiv>
-              { label == '1' ? (<Labelyear>{`${label} año`}</Labelyear>) : (<Labelyear>{`${label} años`}</Labelyear>) }
+              { parseInt(label) <= 1 ? (<Labelyear>{`${label} año`}</Labelyear>) : (<Labelyear>{`${label} años`}</Labelyear>) }
               <Simpol>
                   <NumberFormat 
                   value={payload[0].value + deposit}

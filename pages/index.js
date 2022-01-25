@@ -13,29 +13,30 @@ import NumberFormat from 'react-number-format';
 const oldData = [
   {
     name: "0",
-    "Cuenta de ahorros bancaria":0,
-    Simpol: 0,
+    "Cuenta de ahorros bancaria":500,
+    Simpol: 500,
   },
   {
     name: "1",
-    "Cuenta de ahorros bancaria": 1.2,
-    Simpol: 50,
+    "Cuenta de ahorros bancaria": 501.2,
+    Simpol: 550,
   },
   {
     name: "5",
-    "Cuenta de ahorros bancaria": 6.2,
-    Simpol: 250,
+    "Cuenta de ahorros bancaria": 506.2,
+    Simpol: 750,
   },
   {
     name: "10",
-    "Cuenta de ahorros bancaria": 12,
-    Simpol: 500,
+    "Cuenta de ahorros bancaria": 512,
+    Simpol: 1000,
   },
 ];
 
 let data = oldData;
 function HomePage() {
   const [TotalGain, setTotalGain] = useState(1000);
+  const [Length, setLength] = useState(5);
 
   const DefaultValues = {
     deposit: 500,
@@ -68,8 +69,9 @@ function HomePage() {
         Simpol: 0,
       },
     ]
-    let Length = years
-    for (let index = 1; index <= Length ; index++) {
+    setLength(years)
+    let length = years
+    for (let index = 1; index <= length ; index++) {
       const r = 0.1047;
       const Z = 1 + r;
       const U = Math.pow(Z, index);
