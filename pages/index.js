@@ -272,7 +272,7 @@ function HomePage() {
              prefix={'$'} 
              />
            </GainValue>
-        <Graph data={data} />
+        <Graph data={data} deposit={depositInicial} />
         </div>
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
@@ -283,7 +283,7 @@ function HomePage() {
              value={depositInicial}
              displayType={'text'} 
              thousandSeparator={true}
-             prefix={'$'} 
+             prefix={'$ '} 
              />
             </InitialValue>
           </ContainerDeposit>
