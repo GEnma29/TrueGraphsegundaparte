@@ -17,24 +17,19 @@ const oldData = [
     Simpol: 0,
   },
   {
-    name: "1 año",
+    name: "1",
     "Cuenta de ahorros bancaria": 1.2,
     Simpol: 50,
   },
   {
-    name: "5 años",
+    name: "5",
     "Cuenta de ahorros bancaria": 6.2,
     Simpol: 250,
   },
   {
-    name: "10 años",
+    name: "10",
     "Cuenta de ahorros bancaria": 12,
     Simpol: 500,
-  },
-  {
-    name: "20 años",
-    "Cuenta de ahorros bancaria": 26,
-    Simpol: 1000,
   },
 ];
 
@@ -55,7 +50,6 @@ function HomePage() {
 
 
   const depositInicial = watch("deposit");
-
   /*function updateGain(desposit,years){
     const r = 0.1047;
     const Z = 1 + r;
@@ -66,16 +60,15 @@ function HomePage() {
     return console.log(ValueG)
     
   }*/
-  function UpdateData(deposit, years) {
+  function UpdateData(deposit,years) {
     const unArray = [
       {
         name: "0",
         "Cuenta de ahorros bancaria": 0,
         Simpol: 0,
-      }
+      },
     ]
-    const Length = years
-    console.log(Length)
+    let Length = years
     for (let index = 1; index <= Length ; index++) {
       const r = 0.1047;
       const Z = 1 + r;
@@ -86,13 +79,13 @@ function HomePage() {
       unArray.push({
         name: index,
         "Cuenta de ahorros bancaria": Math.round(GainBank * index ),
-        Simpol:Math.round(ValueG),
+        Simpol: Math.round(ValueG),
 
       })
 
       console.log(`${Math.round(ValueG)} esta es la ganancia de ${index}`)
       data = unArray
-      setTotalGain(Math.round(ValueG))
+      setTotalGain(Math.round(Ganancia))
     }
     console.log(unArray)
   
@@ -285,7 +278,14 @@ function HomePage() {
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
           <ContainerDeposit>
             <p>Depósito inicial</p>
-            <InitialValue>{`$ ${depositInicial}`}</InitialValue>
+            <InitialValue>
+            <NumberFormat 
+             value={depositInicial}
+             displayType={'text'} 
+             thousandSeparator={true}
+             prefix={'$'} 
+             />
+            </InitialValue>
           </ContainerDeposit>
           <Controller
             control={control}
@@ -299,7 +299,7 @@ function HomePage() {
                   defaultValue={500}
                   step={100}
                   min={500}
-                  max={100000}
+                  max={50000}
                 />
               </>
             )}

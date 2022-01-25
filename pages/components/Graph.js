@@ -11,10 +11,10 @@ const Graph = ({data}) => {
         <XAxis dataKey="name"/>
         <YAxis>
         </YAxis>
-        <Tooltip />
+        <Tooltip separator=': $' />
         <Legend />
-        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
-        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
+        <Line type="monotone" strokeWidth={3} dataKey="Simpol" stroke="#0063F7" />
+        <Line type="monotone" strokeWidth={4} dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
         </LineChart>
         </ViewDesktop>
         <ViewMobilesm>
@@ -25,8 +25,8 @@ const Graph = ({data}) => {
         </YAxis>
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
-        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Simpol" stroke="#0063F7" />
+        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
         </LineChart>
         </ViewMobilesm>
         <ViewMobilemd>
@@ -37,8 +37,8 @@ const Graph = ({data}) => {
         </YAxis>
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Simpol" stroke="#8884d8" />
-        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Simpol" stroke="##0063F7" />
+        <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
         </LineChart>
         </ViewMobilemd>
         </>
