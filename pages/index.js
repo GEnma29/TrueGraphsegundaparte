@@ -267,11 +267,12 @@ function HomePage() {
       <ContainerRow>
         <div>
           <GainValue>
+            Retorno 
              <NumberFormat 
              value={TotalGain}
              displayType={'text'} 
              thousandSeparator={true}
-             prefix={'$'} 
+             prefix={'  $ '} 
              />
            </GainValue>
         <Graph data={data} deposit={depositInicial} />
@@ -289,6 +290,11 @@ function HomePage() {
              />
             </InitialValue>
           </ContainerDeposit>
+          <Text>
+            <p>
+            Todos los saldos tanto de depósito inicial como ganancia están expresados en USD
+            </p>
+          </Text>
           <Controller
             control={control}
             name="deposit"
@@ -351,6 +357,23 @@ const Leyendy = styled.p`
   line-height: 16px;
   letter-spacing: 0em;
 `;
+
+const Text = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+margin: 0;
+> p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: justify;
+  color: #021F77;
+}
+
+`
 
 const InitialValue = styled.h4`
 font-size: 1.2rem;
