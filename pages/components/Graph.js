@@ -54,7 +54,7 @@ const Graph = ({data, deposit}) => {
         <XAxis dataKey="name"/>
         <YAxis >
         </YAxis>
-        <Tooltip />
+        <Tooltip content={CustomTooltip} />
         <Legend />
         <Line type="monotone" dataKey="Simpol" stroke="#0063F7" />
         <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
@@ -66,7 +66,7 @@ const Graph = ({data, deposit}) => {
         <XAxis dataKey="name"/>
         <YAxis>
         </YAxis>
-        <Tooltip />
+        <Tooltip content={CustomTooltip} />
         <Legend />
         <Line type="monotone" dataKey="Simpol" stroke="#0063F7" />
         <Line type="monotone" dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
