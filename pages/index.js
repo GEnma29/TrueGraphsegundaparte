@@ -82,7 +82,7 @@ function HomePage() {
 
       console.log(`${Math.round(ValueG)} esta es la ganancia de ${index}`)
       data = unArray
-      setTotalGain(Math.round(Ganancia))
+      setTotalGain(Math.round(ValueG + deposit))
     }
     console.log(unArray)
   
