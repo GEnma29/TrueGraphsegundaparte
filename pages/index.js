@@ -7,15 +7,11 @@ import Slider from "@mui/material/Slider";
 import Box from '@mui/material/Box';
 //import TextField from '@mui/material/TextField';
 import NumberFormat from 'react-number-format';
+import Decimal from "decimal.js-light";
 //import { OneYearsCalculate } from "./components/funtions";
 
 
 const oldData = [
-  {
-    name: "0",
-    "Cuenta de ahorros bancaria":500,
-    Simpol: 500,
-  },
   {
     name: "1",
     "Cuenta de ahorros bancaria": 501.2,
@@ -62,22 +58,21 @@ function HomePage() {
     
   }*/
   function UpdateData(deposit,years) {
-    const unArray = [
-      {
-        name: "0",
-        "Cuenta de ahorros bancaria": 0,
-        Simpol: 0,
-      },
-    ]
+    const unArray = []
     setLength(years)
     let length = years
+    let k = 0 // k is variable to correct the graph 
     for (let index = 1; index <= length ; index++) {
-      const r = 0.1047;
-      const Z = 1 + r;
-      const U = Math.pow(Z, index);
-      const Ganancia = U * deposit;
-      const ValueG = Ganancia - deposit;
+      const r = new Decimal(0.1047); // value for rewar by year
+      const Z = r.plus(1).toNumber(); // this equivalent to (r + 1)
+      const z = new Decimal(Z)
+      const U = z.toPower(index)// (1 + r)^t where index is time
+      console.log(U)
+      const uDecimal = new Decimal(U) // convert u to decimal 
+      const Ganancia = uDecimal.mul(deposit).toNumber();// deposit (1 + r)^t 
+      const ValueG = Ganancia - deposit + k;
       const GainBank = deposit * 0.0026;
+       k = 6
       unArray.push({
         name: index,
         "Cuenta de ahorros bancaria": Math.round(GainBank * index ),
