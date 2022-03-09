@@ -31,7 +31,7 @@ const oldData = [
 
 let data = oldData;
 function HomePage() {
-  const [TotalGain, setTotalGain] = useState(1000);
+  const [TotalGain, setTotalGain] = useState(1500);
   const [Length, setLength] = useState(5);
 
   const DefaultValues = {
