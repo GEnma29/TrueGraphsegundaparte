@@ -40,8 +40,7 @@ const Graph = ({data, deposit}) => {
         <LineChart width={750} height={265} data={data} margin={{ top: 25, right: 40, left: 20, bottom: 20 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
-        <YAxis>
-        </YAxis>
+        <YAxis type="number" domain={['dataMin', 'dataMax']} />
         <Tooltip content={CustomTooltip} />
         <Legend />
         <Line type="monotone" strokeWidth={3} dataKey="Simpol" stroke="#0063F7" />
@@ -52,7 +51,7 @@ const Graph = ({data, deposit}) => {
         <LineChart width={360} height={360} data={data} margin={{ top: 35, right: 30, left: 20, bottom: 45 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
-        <YAxis >
+        <YAxis type="number" domain={['dataMin', 'dataMax']} >
         </YAxis>
         <Tooltip content={CustomTooltip} />
         <Legend />
@@ -64,7 +63,7 @@ const Graph = ({data, deposit}) => {
         <LineChart width={390} height={360} data={data}  margin={{ top: 35, right: 30, left: 20, bottom: 45 }}>
         <CartesianGrid strokeDasharray="33" />
         <XAxis dataKey="name"/>
-        <YAxis>
+        <YAxis type="number" domain={['dataMin', 'dataMax']} >
         </YAxis>
         <Tooltip content={CustomTooltip} />
         <Legend />

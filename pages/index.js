@@ -287,7 +287,7 @@ function HomePage() {
           </ContainerDeposit>
           <Text>
             <p>
-            Todos los saldos tanto de depósito inicial como ganancia están expresados en USD
+            Todos los saldos tanto de depósito inicial como ganancia están expresados en UST
             </p>
           </Text>
           <Controller
@@ -324,11 +324,11 @@ function HomePage() {
               />}
               name="years"
               control={control}
-              defaultValue={0}
+              defaultValue={2}
               rules={
                 { 
                   max: 50,
-                  min: 1,
+                  min: 2,
                   maxLength: 2,
                 } 
               }
