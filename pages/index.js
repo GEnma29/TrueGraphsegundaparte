@@ -8,8 +8,7 @@ import Box from '@mui/material/Box';
 //import TextField from '@mui/material/TextField';
 import NumberFormat from 'react-number-format';
 import Decimal from "decimal.js-light";
-import TextField from '@mui/material/TextField';
-//import { OneYearsCalculate } from "./components/funtions";
+
 
 
 const oldData = [
@@ -33,13 +32,8 @@ const oldData = [
 let data = oldData;
 function HomePage() {
   const [TotalGain, setTotalGain] = useState(1359);
-  const [Length, setLength] = useState(5);
   const [years, setYears] = useState(3)
 
-
-  const handleChange = (event) => {
-    setYears(event.target.value);
-  };
 
   const DefaultValues = {
     deposit: 500,
@@ -54,20 +48,12 @@ function HomePage() {
 
 
   const depositInicial = watch("deposit");
-  /*function updateGain(desposit,years){
-    const r = 0.1047;
-    const Z = 1 + r;
-    const U = Math.pow(Z, years);
-    const Ganancia = U * desposit;
-    const ValueG = Ganancia - desposit;
-    
-    return console.log(ValueG)
-    
-  }*/
   function UpdateData(deposit,years) {
     const unArray = []
-    setLength(years)
-    let length = years
+    let length = 0
+    console.log(years)
+     length = parseInt(years)
+    console.log(length)
     let k = 0 // k is variable to correct the graph 
     for (let index = 1; index <= length ; index++) {
       const r = new Decimal(0.1047); // value for rewar by year
@@ -235,10 +221,15 @@ function HomePage() {
     const subscription = watch((value, { name, type }) => {
       console.log(value, name, type);
       const deposit = watch("deposit");
+      const time = watch("years")
      // updateGain(deposit, parseInt(years))
-     const time = parseInt(years )
+     if (years < time) {
+       
+     }
+     setYears(Number(time))
+     setYears(Number(time) + 1)
      //const TimeTotal = time + 1
-      UpdateData(deposit,time)
+      UpdateData(deposit,years)
     });
     return () => subscription.unsubscribe();
   }, [watch,years]);
