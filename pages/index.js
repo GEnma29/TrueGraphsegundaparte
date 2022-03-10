@@ -8,35 +8,42 @@ import Box from '@mui/material/Box';
 //import TextField from '@mui/material/TextField';
 import NumberFormat from 'react-number-format';
 import Decimal from "decimal.js-light";
+import TextField from '@mui/material/TextField';
 //import { OneYearsCalculate } from "./components/funtions";
 
 
 const oldData = [
   {
     name: "1",
-    "Cuenta de ahorros bancaria": 501.2,
-    Simpol: 550,
+    "Cuenta de ahorros bancaria": 1.2,
+    Simpol: 52,
   },
   {
     name: "5",
-    "Cuenta de ahorros bancaria": 506.2,
-    Simpol: 750,
+    "Cuenta de ahorros bancaria": 6.2,
+    Simpol: 329,
   },
   {
     name: "10",
-    "Cuenta de ahorros bancaria": 512,
-    Simpol: 1000,
+    "Cuenta de ahorros bancaria": 12,
+    Simpol: 859,
   },
 ];
 
 let data = oldData;
 function HomePage() {
-  const [TotalGain, setTotalGain] = useState(1500);
+  const [TotalGain, setTotalGain] = useState(1359);
   const [Length, setLength] = useState(5);
+  const [years, setYears] = useState(3)
+
+
+  const handleChange = (event) => {
+    setYears(event.target.value);
+  };
 
   const DefaultValues = {
     deposit: 500,
-    years: 0,
+    years: 3,
   };
 
   const { register, watch, control } = useForm({
@@ -227,13 +234,14 @@ function HomePage() {
   React.useEffect(() => {
     const subscription = watch((value, { name, type }) => {
       console.log(value, name, type);
-      const years = watch("years");
       const deposit = watch("deposit");
      // updateGain(deposit, parseInt(years))
-      UpdateData(deposit, parseInt(years))
+     const time = parseInt(years )
+     //const TimeTotal = time + 1
+      UpdateData(deposit,time)
     });
     return () => subscription.unsubscribe();
-  }, [watch]);
+  }, [watch,years]);
 
   /**
    *  <Input type="number" min={0} max={50} {...register("years")} />
@@ -310,29 +318,21 @@ function HomePage() {
           <ContainerDeposit>
             <p>Años</p>
             <Box 
-            border={'1px solid #bdbdbd'} 
-            borderRadius={'15px'} 
             padding={1}
-            width={'2rem'}
+            width={'3rem'}
             >
-              <Controller
-              render={({ field }) => 
-              <Input 
+            <Input 
               type="number"
-              {...field}
-              onChange={(e) => field.onChange(parseInt(e.target.value))}
-              />}
-              name="years"
-              control={control}
-              defaultValue={2}
-              rules={
-                { 
-                  max: 50,
-                  min: 2,
-                  maxLength: 2,
-                } 
-              }
+              {...register("years", {
+                min: 3,
+                max:80,
+                onChange: (e) =>{ 
+                  setYears(e.target.value)
+                 
+                }
+              })}
               />
+             
     
             </Box>
           </ContainerDeposit>
