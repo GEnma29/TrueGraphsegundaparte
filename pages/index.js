@@ -18,23 +18,62 @@ const oldData = [
     Simpol: 52,
   },
   {
+    name: "2",
+    "Cuenta de ahorros bancaria": 3,
+    Simpol: 115,
+  },
+  {
+    name: "3",
+    "Cuenta de ahorros bancaria": 4,
+    Simpol: 179,
+  },
+  {
+    name: "4",
+    "Cuenta de ahorros bancaria": 5,
+    Simpol: 250,
+  },
+  {
     name: "5",
-    "Cuenta de ahorros bancaria": 6.2,
-    Simpol: 329,
+    "Cuenta de ahorros bancaria": 6,
+    Simpol: 328,
+  },
+  {
+    name: "6",
+    "Cuenta de ahorros bancaria": 7,
+    Simpol: 414,
+  },
+  {
+    name: "7",
+    "Cuenta de ahorros bancaria": 8,
+    Simpol: 509,
+  },
+  {
+    name: "8",
+    "Cuenta de ahorros bancaria": 9,
+    Simpol: 614,
+  },
+  {
+    name: "9",
+    "Cuenta de ahorros bancaria": 10,
+    Simpol: 730,
   },
   {
     name: "10",
-    "Cuenta de ahorros bancaria": 12,
-    Simpol: 859,
+    "Cuenta de ahorros bancaria": 13,
+    Simpol: 858,
   },
+  
 ];
 
 let data = oldData;
 function HomePage() {
   const [TotalGain, setTotalGain] = useState(1359);
-  const [years, setYears] = useState(3)
-  const ref = useRef(years)
+  const [years, setYears] = useState(10)
+  const [deposit, setdeposit] = useState(500)
 
+  const handleChange = (event, newValue) => {
+    setdeposit(newValue);
+  };
 
   const DefaultValues = {
     deposit: 500,
@@ -220,18 +259,8 @@ function HomePage() {
 */ }
 
   React.useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
-      console.log(value, name, type);
-      const deposit = watch("deposit");
-      const time = watch("years")
-      ref.current = time
-     // updateGain(deposit, parseInt(years))
-     setYears(Number(ref.current))
-     //const TimeTotal = time + 1
       UpdateData(deposit,years)
-    });
-    return () => subscription.unsubscribe();
-  }, [watch,years]);
+  }, [years,deposit]);
 
   /**
    *  <Input type="number" min={0} max={50} {...register("years")} />
@@ -292,7 +321,7 @@ function HomePage() {
             control={control}
             name="deposit"
             defaultValue={500}
-            render={({ field }) => (
+            render={({ field , onChange }) => (
               <>
                 <Slider
                   {...field}
@@ -301,6 +330,7 @@ function HomePage() {
                   step={100}
                   min={500}
                   max={50000}
+                  onChange={handleChange}
                 />
               </>
             )}
@@ -315,7 +345,7 @@ function HomePage() {
               type="number"
               {...register("years", {
                 max:80,
-                onChange:(e)=>{console.log(e.target.value)}
+                onChange:(e)=>{setYears(e.target.value), console.log(years)}
               })}
               />
              
