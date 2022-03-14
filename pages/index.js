@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef } from "react";
 import styled from "styled-components";
 import Graph from "./components/Graph";
 import { useForm, Controller } from "react-hook-form";
@@ -33,17 +33,19 @@ let data = oldData;
 function HomePage() {
   const [TotalGain, setTotalGain] = useState(1359);
   const [years, setYears] = useState(3)
+  const ref = useRef(years)
 
 
   const DefaultValues = {
     deposit: 500,
-    years: 3,
+    years: 10,
   };
 
   const { register, watch, control } = useForm({
     mode: "onChange",
     defaultValues: DefaultValues,
   });
+
 
 
 
@@ -65,7 +67,7 @@ function HomePage() {
       const Ganancia = uDecimal.mul(deposit).toNumber();// deposit (1 + r)^t 
       const ValueG = Ganancia - deposit + k;
       const GainBank = deposit * 0.0026;
-       k = 6
+       k = 5
       unArray.push({
         name: index,
         "Cuenta de ahorros bancaria": Math.round(GainBank * index ),
@@ -222,12 +224,9 @@ function HomePage() {
       console.log(value, name, type);
       const deposit = watch("deposit");
       const time = watch("years")
+      ref.current = time
      // updateGain(deposit, parseInt(years))
-     if (years < time) {
-       
-     }
-     setYears(Number(time))
-     setYears(Number(time) + 1)
+     setYears(Number(ref.current))
      //const TimeTotal = time + 1
       UpdateData(deposit,years)
     });
@@ -315,12 +314,8 @@ function HomePage() {
             <Input 
               type="number"
               {...register("years", {
-                min: 3,
                 max:80,
-                onChange: (e) =>{ 
-                  setYears(e.target.value)
-                 
-                }
+                onChange:(e)=>{console.log(e.target.value)}
               })}
               />
              
