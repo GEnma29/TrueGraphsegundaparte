@@ -297,7 +297,7 @@ function HomePage() {
              prefix={'  $ '} 
              />
            </GainValue>
-        <Graph data={data} deposit={depositInicial} />
+        <Graph data={data} deposit={deposit} />
         </div>
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
