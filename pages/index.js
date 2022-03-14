@@ -305,7 +305,7 @@ function HomePage() {
             <p>Depósito inicial</p>
             <InitialValue>
             <NumberFormat 
-             value={depositInicial}
+             value={deposit}
              displayType={'text'} 
              thousandSeparator={true}
              prefix={'$ '} 
@@ -320,7 +320,6 @@ function HomePage() {
           <Controller
             control={control}
             name="deposit"
-            defaultValue={500}
             render={({ field , onChange }) => (
               <>
                 <Slider
@@ -330,6 +329,7 @@ function HomePage() {
                   step={100}
                   min={500}
                   max={50000}
+                  value={deposit}
                   onChange={handleChange}
                 />
               </>
@@ -343,6 +343,7 @@ function HomePage() {
             >
             <Input 
               type="number"
+              value={years}
               {...register("years", {
                 max:80,
                 onChange:(e)=>{setYears(e.target.value), console.log(years)}
