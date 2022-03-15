@@ -44,6 +44,7 @@ const Graph = ({data, deposit}) => {
         <Tooltip content={CustomTooltip} />
         <Line type="monotone" strokeWidth={3} dataKey="Simpol" stroke="#0063F7" />
         <Line type="monotone" strokeWidth={4} dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
+        <Legend  margin={{top:20}} />
         </LineChart>
        </ResponsiveContainer>
         </>
