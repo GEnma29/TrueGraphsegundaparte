@@ -14,53 +14,53 @@ import Decimal from "decimal.js-light";
 const oldData = [
   {
     name: "1",
-    "Cuenta de ahorros bancaria": 1.2,
-    Simpol: 52,
+    "Cuenta de ahorros bancaria": 501.2,
+    Simpol: 552,
   },
   {
     name: "2",
-    "Cuenta de ahorros bancaria": 3,
-    Simpol: 115,
+    "Cuenta de ahorros bancaria":503,
+    Simpol: 615,
   },
   {
     name: "3",
-    "Cuenta de ahorros bancaria": 4,
-    Simpol: 179,
+    "Cuenta de ahorros bancaria": 504,
+    Simpol: 679,
   },
   {
     name: "4",
-    "Cuenta de ahorros bancaria": 5,
-    Simpol: 250,
+    "Cuenta de ahorros bancaria": 505,
+    Simpol: 750,
   },
   {
     name: "5",
-    "Cuenta de ahorros bancaria": 6,
-    Simpol: 328,
+    "Cuenta de ahorros bancaria": 506,
+    Simpol: 828,
   },
   {
     name: "6",
-    "Cuenta de ahorros bancaria": 7,
-    Simpol: 414,
+    "Cuenta de ahorros bancaria": 507,
+    Simpol: 914,
   },
   {
     name: "7",
-    "Cuenta de ahorros bancaria": 8,
-    Simpol: 509,
+    "Cuenta de ahorros bancaria": 508,
+    Simpol: 1009,
   },
   {
     name: "8",
-    "Cuenta de ahorros bancaria": 9,
-    Simpol: 614,
+    "Cuenta de ahorros bancaria": 509,
+    Simpol: 1114,
   },
   {
     name: "9",
-    "Cuenta de ahorros bancaria": 10,
-    Simpol: 730,
+    "Cuenta de ahorros bancaria": 510,
+    Simpol: 1230,
   },
   {
     name: "10",
-    "Cuenta de ahorros bancaria": 13,
-    Simpol: 858,
+    "Cuenta de ahorros bancaria": 513,
+    Simpol: 1358,
   },
   
 ];
@@ -104,19 +104,19 @@ function HomePage() {
       console.log(U)
       const uDecimal = new Decimal(U) // convert u to decimal 
       const Ganancia = uDecimal.mul(deposit).toNumber();// deposit (1 + r)^t 
-      const ValueG = Ganancia - deposit + k;
+      const ValueG = Ganancia  + k;
       const GainBank = deposit * 0.0026;
        k = 5
       unArray.push({
         name: index,
-        "Cuenta de ahorros bancaria": Math.round(GainBank * index ),
+        "Cuenta de ahorros bancaria": Math.round(deposit +(GainBank * index) ),
         Simpol: Math.round(ValueG),
 
       })
 
       console.log(`${Math.round(ValueG)} esta es la ganancia de ${index}`)
       data = unArray
-      setTotalGain(Math.round(ValueG + deposit))
+      setTotalGain(Math.round(ValueG))
     }
     console.log(unArray)
   
@@ -287,7 +287,7 @@ function HomePage() {
   return (
     <Container>
       <ContainerRow>
-        <div>
+        <ContainerGraph>
           <GainValue>
             Retorno 
              <NumberFormat 
@@ -298,7 +298,8 @@ function HomePage() {
              />
            </GainValue>
         <Graph data={data} deposit={deposit} />
-        </div>
+        </ContainerGraph>
+        <ContainerItem>
         <ContainerSlider>
           <TitleSlider>Proyecta tus recompensas</TitleSlider>
           <ContainerDeposit>
@@ -354,6 +355,7 @@ function HomePage() {
             </Box>
           </ContainerDeposit>
         </ContainerSlider>
+        </ContainerItem>
       </ContainerRow>
     </Container>
   );
@@ -361,15 +363,23 @@ function HomePage() {
 
 export default HomePage;
 
-const Leyendy = styled.p`
-  display: flex;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 16px;
-  letter-spacing: 0em;
-`;
+const ContainerItem = styled.div`
+display:flex;
+width:100%;
+align-items:center;
+justify-content:center;
 
+`
+
+const ContainerGraph = styled.div`
+display:flex;
+width: 100%;
+flex-direction: column;
+@media screen and (min-width: 720px){
+  min-width: 750px;
+}
+
+`
 const Text = styled.div`
 display: flex;
 align-items: center;
@@ -445,10 +455,16 @@ const ContainerDeposit = styled.div`
 `;
 const ContainerRow = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-direction:column;
   align-items: center;
-  justify-content: space-around;
-  width: 90%;
+  justify-content: center;
+  width: 100%;
+  @media screen and (min-width: 720px){
+    justify-content: space-around;
+    flex-direction:row;
+    width: 90%;
+
+}
 `;
 
 const TitleSlider = styled.h4`
@@ -476,7 +492,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   font-family: Mulish;
 `;
