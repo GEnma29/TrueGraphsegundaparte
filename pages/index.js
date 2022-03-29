@@ -323,7 +323,7 @@ function HomePage() {
             name="deposit"
             render={({ field , onChange }) => (
               <>
-                <Slider
+                <PrettoSlider
                   {...field}
                   aria-label="Restricted values"
                   defaultValue={500}
@@ -417,6 +417,46 @@ font-weight: 800;
 
 
 `
+const PrettoSlider = styled(Slider)({
+  color: '#1FAAA5',
+  height: 8,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&:before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#52af77',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&:before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+});
+
+
 const Input = styled.input`
   background-color: #fff !important;
   z-index: 1;
@@ -470,7 +510,7 @@ const ContainerRow = styled.div`
 const TitleSlider = styled.h4`
   display: flex;
   font-weight: 800;
-  color: #0063f7;
+  color: #183A60;
   font-size: 1.2rem;
   align-self: flex-start;
   margin: 0;

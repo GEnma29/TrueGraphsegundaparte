@@ -42,8 +42,8 @@ const Graph = ({data, deposit}) => {
         <XAxis dataKey="name"/>
         <YAxis type="number" domain={['dataMin', 'dataMax']} />
         <Tooltip content={CustomTooltip} />
-        <Line type="monotone" strokeWidth={3} dataKey="Simpol" stroke="#0063F7" />
-        <Line type="monotone" strokeWidth={4} dataKey="Cuenta de ahorros bancaria" stroke="#101737" />
+        <Line type="monotone" strokeWidth={3} dataKey="Simpol" stroke="#1FAAA5" />
+        <Line type="monotone" strokeWidth={4} dataKey="Cuenta de ahorros bancaria" stroke="#183A60" />
         <Legend  margin={{top:20}} />
         </LineChart>
        </ResponsiveContainer>
